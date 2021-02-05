@@ -1,3 +1,5 @@
+### Manipulando a base de dados para obter o dataframe em que cada observação é um dia
+
 ### Pacotes externos
 import urllib.request
 import pandas as pd
@@ -38,3 +40,6 @@ print(df.head(5))
 df = df.drop(df.columns[[4, 5, 6, 7, 8, 9, 10, 11]], axis=1)
 print(df.head(5))
 
+### Contando a frequência de casos por dia
+df['freq'] = df['notific'].value_counts()
+print(df.head(5))
