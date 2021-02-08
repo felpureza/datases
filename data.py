@@ -52,26 +52,41 @@ print(df.head(5))
 df = df.drop(df.columns[[4, 5, 6, 7, 8, 9, 10, 11]], axis=1)
 print(df.head(5))
 
+### Transformando a variável notific em uma data
+df['notific']= pd.to_datetime(df['notific'])
 
-##### ARRUMAR OS CÓDIGOS DAQUI PARA BAIXO
-### Montando o dataframe para Goiás
-goias = df ## Replicando o dataframe original
-goias['freq'] = goias.groupby('notific')['notific'].transform('count') ## Gerando a frequência de casos por dia
-goias = df.drop_duplicates(subset=['notific'], keep='last') ## Fazendo com que o dia seja cada observação
-goias.sort_values(by=['notific'])
-sum_go = goias['freq'].sum()
-#goias.set_index('notific', inplace=True)
-
-
-### Montando o dataframe para Goiânia
+### Montando os dataframes para Goiás e para Goiânia
+# Criando os dataframes
+goias = df
 goiania = df[df.codigo_ibge == 520870]
+
+# Gerando a variável de frequência diária
+goias['freq'] = goias.groupby('notific')['notific'].transform('count')
 goiania['freq'] = goiania.groupby('notific')['notific'].transform('count')
+
+# Mantendo apenas uma linha por dia
+goias = df.drop_duplicates(subset=['notific'], keep='last')
 goiania = goiania.drop_duplicates(subset=['notific'], keep='last')
-goiania.sort_values(by=['notific'])
+
+# Conferindo se a soma das frequência bate com a quantidade de casos
+sum_go = goias['freq'].sum()
 sum_gyn = goiania['freq'].sum()
 
+# Ordenando os valores por ordem crescente
+goias = goias.sort_values(by='data_notificacao', ascending=True)
+goiania = goiania.sort_values(by='data_notificacao', ascending=True)
+
+# Ordenando a série por notific
+goias.sort_values(by=['notific'])
+goiania.sort_values(by=['notific'])
+
+# Indexando a variável notific
+#goias.set_index('notific', inplace=True)
+#goiania.set_index('notific', inplace=True)
+
+
 ### Calculando as médias móveis
-goias['media'] = df.iloc[:,6].rolling(window=7).mean()
+#goias['media'] = df.iloc[:,6].rolling(window=7).mean()
 
 
 ######### O que falta:
