@@ -17,6 +17,18 @@ print(df.head(5))
 df = df[['data_notificacao','data_inicio_sintomas','codigo_ibge','municipio']]
 print(df.head(5))
 
+### Valores registrados como de janeiro de 2020 são registrados como janeiro de 2020
+df = df.replace([20200101],20210101)
+df = df.replace([20200102],20210102)
+df = df.replace([20200103],20210103)
+df = df.replace([20200104],20210104)
+df = df.replace([20200105],20210105)
+df = df.replace([20200106],20210106)
+df = df.replace([20200107],20210107)
+df = df.replace([20200115],20210115)
+df = df.replace([20200118],20210118)
+df = df.replace([20200130],20210130)
+
 ### Separando os valores dos números das datas de notificação e de primeiros sintomas
 # Transformando as variáveis numéricas em variáveis de texto
 df['not'] = df['data_notificacao'].astype(str)
@@ -40,6 +52,30 @@ print(df.head(5))
 df = df.drop(df.columns[[4, 5, 6, 7, 8, 9, 10, 11]], axis=1)
 print(df.head(5))
 
-### Contando a frequência de casos por dia
-df['freq'] = df['notific'].value_counts()
-print(df.head(5))
+
+##### ARRUMAR OS CÓDIGOS DAQUI PARA BAIXO
+### Montando o dataframe para Goiás
+goias = df ## Replicando o dataframe original
+goias['freq'] = goias.groupby('notific')['notific'].transform('count') ## Gerando a frequência de casos por dia
+goias = df.drop_duplicates(subset=['notific'], keep='last') ## Fazendo com que o dia seja cada observação
+goias.sort_values(by=['notific'])
+sum_go = goias['freq'].sum()
+#goias.set_index('notific', inplace=True)
+
+
+### Montando o dataframe para Goiânia
+goiania = df[df.codigo_ibge == 520870]
+goiania['freq'] = goiania.groupby('notific')['notific'].transform('count')
+goiania = goiania.drop_duplicates(subset=['notific'], keep='last')
+goiania.sort_values(by=['notific'])
+sum_gyn = goiania['freq'].sum()
+
+### Calculando as médias móveis
+goias['media'] = df.iloc[:,6].rolling(window=7).mean()
+
+
+######### O que falta:
+    ## Ordenar os dataframes de acordo com a primeira data
+    ## Calcular os dataframes
+    ## Plotar os gráficos
+    
