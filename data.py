@@ -114,8 +114,10 @@ for i in range(0,goiania.shape[0]-6):
 ### Plotando os gráficos de média móvel
 # Goiás
 plt.figure(figsize=[15,10])
-plt.grid(True)
 plt.plot(goias['media'])
+plt.title('Média móvel de casos notificados de Covid-19', fontsize=20)
+plt.xlabel('Dias', fontsize=16)
+plt.ylabel('Média Móvel', fontsize=16)
 plt.savefig('goias.png')
 
     
