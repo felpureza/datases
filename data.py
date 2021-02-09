@@ -4,6 +4,7 @@
 import urllib.request
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 ### Baixando a base de dados da internet
 url = 'https://datasets.saude.go.gov.br/coronavirus/casos_confirmados.csv'
@@ -80,17 +81,41 @@ goiania = goiania.sort_values(by='data_notificacao', ascending=True)
 goias.sort_values(by=['notific'])
 goiania.sort_values(by=['notific'])
 
-# Indexando a variável notific
-#goias.set_index('notific', inplace=True)
-#goiania.set_index('notific', inplace=True)
-
+# Reindexando os dataframes
+goias = goias.reset_index(drop=True)
+goiania = goiania.reset_index(drop=True)
 
 ### Calculando as médias móveis
-#goias['media'] = df.iloc[:,6].rolling(window=7).mean()
+# Goiás
+for i in range(0,goias.shape[0]-6):
+    goias.loc[goias.index[i+6],'media'] = np.round(((
+        goias.iloc[i,6] + 
+        goias.iloc[i+1,6] + 
+        goias.iloc[i+2,6] + 
+        goias.iloc[i+3,6] + 
+        goias.iloc[i+4,6] + 
+        goias.iloc[i+5,6] + 
+        goias.iloc[i+6,6])/7),6)
 
+# Goiânia
+for i in range(0,goiania.shape[0]-6):
+    goiania.loc[goiania.index[i+6],'media'] = np.round(((
+        goiania.iloc[i,6] + 
+        goiania.iloc[i+1,6] + 
+        goiania.iloc[i+2,6] + 
+        goiania.iloc[i+3,6] + 
+        goiania.iloc[i+4,6] + 
+        goiania.iloc[i+5,6] + 
+        goiania.iloc[i+6,6])/7),6)
+    
+# Fórmula extraída em:
+# https://www.datacamp.com/community/tutorials/moving-averages-in-pandas
 
-######### O que falta:
-    ## Ordenar os dataframes de acordo com a primeira data
-    ## Calcular os dataframes
-    ## Plotar os gráficos
+### Plotando os gráficos de média móvel
+# Goiás
+plt.figure(figsize=[15,10])
+plt.grid(True)
+plt.plot(goias['media'])
+plt.savefig('goias.png')
+
     
