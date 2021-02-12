@@ -1,27 +1,32 @@
-# Pacotes externos
+#Pacotes externos
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-# Pacotes internos
+## Pacotes internos
 from plot import fig
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = dash.Dash()
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+colors = {
+    'background': '#FFFFFF',
+    'text': '#000000'
+}
 
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-
-    html.Div(children='''
-        Dash: A web application framework for Python.
-    '''),
-
+app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+    html.H1(
+        children='Média móvel de casos da Covid-19 em Goiás e em Goiânia',
+        style={
+            'textAlign': 'center',
+            'color': colors['text']
+        }
+    ),
     dcc.Graph(
-        id='example-graph',
+        id='Graph1',
         figure=fig
     )
 ])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+

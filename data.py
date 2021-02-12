@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 ### Baixando a base de dados da internet
 url = 'https://datasets.saude.go.gov.br/coronavirus/casos_confirmados.csv'
-urllib.request.urlretrieve(url, 'C:/Users/Pichau/Documents/GitHub/datases/casos.csv')
+urllib.request.urlretrieve(url, 'C:/Users/03829889143/Documents/GitHub/Graphs/Graphs/datases/casos.csv')
 
 ### Transformando o arquivo .csv em um data frame
 df = pd.read_csv("casos.csv", sep=';')

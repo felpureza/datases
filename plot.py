@@ -20,7 +20,7 @@ fig.add_trace(go.Scatter(x=goiania['notific'], y=goiania['media'],
                     name='Goiânia',
                     line=dict(color='purple', width=4)))
 
-fig.update_layout(title='Média móvel de casos da Covid-19 em Goiás e em Goiânia',
+fig.update_layout(title='',
                    xaxis_title='Dias',
                    yaxis_title='Média de casos',
                    title_font=dict(size=30, color='black'),
@@ -42,4 +42,4 @@ fig.update_yaxes(showgrid=False,
                  )
 
 
-plotly.offline.plot(fig)
+#plotly.offline.plot(fig)
