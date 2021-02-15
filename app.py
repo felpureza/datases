@@ -5,6 +5,8 @@ import dash_html_components as html
 
 ## Pacotes internos
 from plot import fig
+from data import sum_go, sum_gyn
+
 
 app = dash.Dash()
 

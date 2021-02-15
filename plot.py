@@ -4,10 +4,11 @@
 import plotly.graph_objects as go
 import plotly
 import plotly.graph_objs
+from datetime import date
 
 ## Pacotes internos
 from data import goias, goiania
-from data import sum_go, sum_gyn
+
 
 ### Figura
 fig = go.Figure()
@@ -54,9 +55,9 @@ fig.update_layout(xaxis=dict(showline=True,
                              ticks='outside',
                              tickfont=dict(family='Arial',
                                            size=16,
-                                           color='black'),
-                             tick0='2020-04-01'
+                                           color='black')
                              )
+                  #xaxis_tickformat = '%-m/%Y'
 )
 
 ### Linha do eixo y
@@ -76,8 +77,13 @@ fig.update_layout(legend=dict(yanchor='top',
                                         color='black'))
 )
 
-### Fundo do gráfico
+### Layout do fundo do gráfico
 fig.update_layout(plot_bgcolor='white'
 )
 
+### Plotando a partir de 01/04/2020
+today = date.today()
+fig.update_layout(xaxis_range=['2020-04-01',today])
+
+### Gerando o gráfico de forma offline
 plotly.offline.plot(fig)
