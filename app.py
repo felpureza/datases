@@ -7,28 +7,57 @@ import dash_html_components as html
 from plot import fig
 from data import sum_go, sum_gyn
 
+app = dash.Dash(__name__,
+                meta_tags=[{"name": "viewport", "content": "width=device-width"}]
+)
 
-app = dash.Dash()
+server = app.server
+app.title = 'Covid-19 em Goiás'
 
-colors = {
-    'background': '#FFFFFF',
-    'text': '#000000'
-}
 
-app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
-    html.H1(
-        children='Média móvel de casos da Covid-19 em Goiás e em Goiânia',
-        style={
-            'textAlign': 'center',
-            'color': colors['text']
-        }
-    ),
-    dcc.Graph(
-        id='Graph1',
-        figure=fig
-    )
-])
+app.layout = html.H1(
+    children = [
+    html.Div(className = 'header__text',
+             children=[
+                 html.H2("Média móvel de casos da Covid-19 em Goiás e em Goiânia",
+                         className="header__text",
+                         style = {'textAlign': 'center'
+                                  }
+                         )
+                 ]),
+
+    html.Section([
+            html.Div(
+                id='linha1',
+                children = [ 
+                    html.Div(children = ['Casos em Goiás',
+                                         html.Br(),
+                                         sum_go],
+                             id='sum_go',
+                             className='mini_container'),
+                    html.Div(children = ['Casos em Goiânia',
+                                         html.Br(),
+                                         sum_gyn],
+                             id='sum_gyn',
+                             className='mini_container'),            
+                    ],
+                ),
+            html.Br(),
+            html.Div(
+                id='linha2',
+                children = [
+                    dcc.Graph(id='grafico', 
+                              figure=fig),         
+                    ],
+                ),
+            html.Br(),
+    
+    ])
+    ]
+)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
 
