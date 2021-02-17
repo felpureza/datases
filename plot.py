@@ -33,7 +33,7 @@ fig.add_trace(go.Scatter(x=goiania['notific'], y=goiania['media'],
 fig.update_layout(title='',
                    title_font=dict(size=30,
                                    color='black',
-                                   family='Arial')
+                                   family='Trebuchet MS')
 )
 
 ### Título dos eixos
@@ -41,10 +41,10 @@ fig.update_layout(xaxis_title='Dias',
                   yaxis_title='Média de casos',
                   xaxis_title_font=dict(size=24,
                                         color='black',
-                                        family='Arial'),
+                                        family='Trebuchet MS'),
                   yaxis_title_font=dict(size=24,
                                         color='black',
-                                        family='Arial')
+                                        family='Trebuchet MS')
 )
 
 ### Linha do eixo x
@@ -53,7 +53,7 @@ fig.update_layout(xaxis=dict(showline=True,
                              showticklabels=True,
                              linecolor='black',
                              ticks='outside',
-                             tickfont=dict(family='Arial',
+                             tickfont=dict(family='Trebuchet MS',
                                            size=16,
                                            color='black')
                              )
@@ -72,7 +72,7 @@ fig.update_yaxes(rangemode='tozero') ## A linha do eixo X fica na linha 0
 ### Legendas
 fig.update_layout(legend=dict(yanchor='top',
                               xanchor='right',
-                              font=dict(family='Arial',
+                              font=dict(family='Trebuchet MS',
                                         size=16,
                                         color='black'))
 )

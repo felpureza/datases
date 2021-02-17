@@ -7,22 +7,18 @@ import dash_html_components as html
 from plot import fig
 from data import sum_go, sum_gyn
 
-app = dash.Dash(__name__,
-                meta_tags=[{"name": "viewport", "content": "width=device-width"}]
-)
+app = dash.Dash(__name__)
 
 server = app.server
 app.title = 'Covid-19 em Goiás'
 
 
-app.layout = html.H1(
+app.layout = html.Div(
     children = [
-    html.Div(className = 'header__text',
+    html.Div(className = 'app-header',
              children=[
-                 html.H2("Média móvel de casos da Covid-19 em Goiás e em Goiânia",
-                         className="header__text",
-                         style = {'textAlign': 'center'
-                                  }
+                 html.H2("Média móvel de casos de Covid-19 em Goiás e em Goiânia",
+                         className="app-title",
                          )
                  ]),
 
@@ -34,12 +30,12 @@ app.layout = html.H1(
                                          html.Br(),
                                          sum_go],
                              id='sum_go',
-                             className='mini_container'),
+                             className='box'),
                     html.Div(children = ['Casos em Goiânia',
                                          html.Br(),
                                          sum_gyn],
                              id='sum_gyn',
-                             className='mini_container'),            
+                             className='box'),            
                     ],
                 ),
             html.Br(),
