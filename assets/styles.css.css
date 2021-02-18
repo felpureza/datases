@@ -1,0 +1,56 @@
+
+/* Co nfigurando o cabeçalho da aplicação*/
+.app-header {
+    height: 120px;
+    line-height: 120px;
+    background: lightgrey;
+	justify-content: center;
+}
+
+.app-title {
+    font-size: 45px;
+    text-align: center;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-weight: 1000;
+}
+
+.box1 {
+	border-radius: 13px;
+	background-color: #717D7E;
+	margin: 10px;
+	padding: 10px;
+	font-weight: 300;
+	box-shadow: 3px 3px 3px #CCD1D1;
+	min-width:20%;
+	color: #FFFFFB;
+	justify-content: center;
+	text-align: center;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 30px;
+
+}
+
+.box2 {
+	border-radius: 13px;
+	background-color: #A5B1B2;
+	margin: 10px;
+	padding: 10px;
+	font-weight: 300;
+	box-shadow: 3px 3px 3px #CCD1D1;
+	min-width:20%;
+	color: #FFFFFB;
+	justify-content: center;
+	text-align: center;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 30px;
+
+}
+
+.grafico{
+    border-radius: 0px;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 15px;
+    position: relative;
+    justify-content: center;
+}

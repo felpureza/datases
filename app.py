@@ -30,13 +30,14 @@ app.layout = html.Div(
                                          html.Br(),
                                          sum_go],
                              id='sum_go',
-                             className='box'),
+                             className='box1'),
                     html.Div(children = ['Casos em Goiânia',
                                          html.Br(),
                                          sum_gyn],
                              id='sum_gyn',
-                             className='box'),            
+                             className='box2'),            
                     ],
+                className='box_org'
                 ),
             html.Br(),
             html.Div(
@@ -45,8 +46,8 @@ app.layout = html.Div(
                     dcc.Graph(id='grafico', 
                               figure=fig),         
                     ],
+                className='grafico'
                 ),
-            html.Br(),
     
     ])
     ]
