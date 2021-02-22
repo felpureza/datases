@@ -1,6 +1,5 @@
 plotly
 datetime
-urllib
 pandas
 numpy
 dash
