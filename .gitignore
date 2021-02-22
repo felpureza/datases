@@ -1,3 +1,4 @@
 # Unuseful files
 __pycache__
-
+.spyderproject
+.spyproject
