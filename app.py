@@ -8,8 +8,8 @@ from plot import fig
 from data import sum_go, sum_gyn
 
 app = dash.Dash(__name__)
-
 server = app.server
+
 app.title = 'Covid-19 em Goiás'
 
 
