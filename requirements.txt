@@ -1,10 +1,6 @@
-plotly.graph_objects
 plotly
-plotly.graph_objs
 datetime
 urllib.request
 pandas
 numpy
 dash
-dash_core_components
-dash_html_components
