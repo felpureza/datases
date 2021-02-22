@@ -4,7 +4,6 @@
 import urllib.request
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 ### Baixando a base de dados da internet
 url = 'https://datasets.saude.go.gov.br/coronavirus/casos_confirmados.csv'
